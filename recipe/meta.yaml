@@ -24,10 +24,11 @@ requirements:
     - pip
     - cython
     # requirement is >=1.13.3, 1.14 is available for python 2.7, 3.6 and 3.7
-    - numpy-devel {{ numpy }} 
+    - numpy-devel {{ numpy }}  # [not (osx and arm64)]
+    - numpy {{ numpy }}        # [osx and arm64]
   run:
     - python
-
+    - {{ pin_compatible('numpy') }}
 test:
   requires:
     - pytest
