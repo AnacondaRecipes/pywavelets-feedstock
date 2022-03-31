@@ -1,3 +1,5 @@
+{% set label = "'full'" %}
+{% set tests = "['pywt']" %}
 {% set name = "PyWavelets" %}
 {% set version = "1.3.0" %}
 
@@ -8,38 +10,42 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: cbaa9d62052d9daf8da765fc8e7c30c38ea2b8e9e1c18841913dfb4aec671ee5
-  patches:
-    # Patch from PyWavelets/pywt#552 (ensure cython calls np.import_array)
-    - pr522.patch
 
 build:
-  number: 4
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  number: 0
+  skip: True  # [py<37]
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - patch     # [not win]
-    - m2-patch  # [win]
   host:
     - python
+    - cython >=0.29.24,<3.0
+    - numpy
     - pip
-    - cython
-    # requirement is >=1.13.3, 1.14 is available for python 2.7, 3.6 and 3.7
-    - numpy-devel {{ numpy }}  # [not (osx and arm64) and py<=39]
-    - numpy {{ numpy }}        # [(osx and arm64) or py>39]
+    - setuptools
+    - wheel
   run:
     - python
     - {{ pin_compatible('numpy') }}
+
 test:
   requires:
+    - pip
     - pytest
   imports:
     - pywt
+  commands:
+    - pip check
+    {% set label = "'full'" %}
+    {% set tests = "['pywt']" %}
+    - python -c "import sys; import pywt; sys.exit(not pywt.test(verbose=2, label={{ label }}, tests={{ tests }}, extra_argv=['--durations=50']))"
 
 about:
   home: https://github.com/PyWavelets/pywt
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: 'Discrete Wavelet Transforms in Python'
   description: |
@@ -48,7 +54,7 @@ about:
     Wavelet transforms are time-frequency transforms employing wavelets. They are similar to
     Fourier transforms, the difference being that Fourier transforms are localized only in
     frequency instead of in time and frequency.
-  doc_url: http://pywavelets.readthedocs.io/en/latest/
+  doc_url: https://pywavelets.readthedocs.io/en/latest/
   dev_url: https://github.com/PyWavelets/pywt
   doc_source_url: https://github.com/PyWavelets/pywt/tree/master/doc
 
