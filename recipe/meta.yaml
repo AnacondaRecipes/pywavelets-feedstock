@@ -22,8 +22,8 @@ requirements:
   host:
     - python
     - cython >=0.29.24,<3.0
-    - numpy 1.18 # [(py==37 or py==38) and not (aarch64 and s390x)]
-    - numpy 1.19 # [(py==37 or py==38) and (aarch64 and s390x)]
+    - numpy 1.18 # [(py==37 or py==38) and not (aarch64 or s390x)]
+    - numpy 1.19 # [(py==37 or py==38) and (aarch64 or s390x)]
     - numpy # [not (py==37 or py==38)]
     - pip
     - setuptools
