@@ -22,11 +22,12 @@ requirements:
   host:
     - python
     - cython >=0.29.24,<3.0
+    # 2022/3/31: numpy versions are available for different platform and 
+    # and meet the upstream requirements https://github.com/PyWavelets/pywt/blob/v1.3.0/pyproject.toml
     - numpy 1.18  # [(py==37 or py==38) and not (aarch64 or s390x or arm64)]
     - numpy 1.19  # [(py==37 or py==38) and (aarch64 or s390x or arm64)]
     - numpy 1.19  # [py==39 and not arm64]
-    - numpy 1.20  # [py==39 and arm64]
-    - numpy 1.21  # [py==310]
+    - numpy 1.21  # [(py==39 and arm64) or py==310]
     - pip
     - setuptools
     - wheel
