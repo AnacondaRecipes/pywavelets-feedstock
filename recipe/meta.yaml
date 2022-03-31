@@ -22,9 +22,11 @@ requirements:
   host:
     - python
     - cython >=0.29.24,<3.0
-    - numpy 1.18 # [(py==37 or py==38) and not (aarch64 or s390x or arm64)]
-    - numpy 1.19 # [(py==37 or py==38) and (aarch64 or s390x or arm64)]
-    - numpy # [not (py==37 or py==38)]
+    - numpy 1.18  # [(py==37 or py==38) and not (aarch64 or s390x or arm64)]
+    - numpy 1.19  # [(py==37 or py==38) and (aarch64 or s390x or arm64)]
+    - numpy 1.19  # [py==39 and not arm64]
+    - numpy 1.20  # [py==39 and arm64]
+    - numpy 1.21  # [py==310]
     - pip
     - setuptools
     - wheel
