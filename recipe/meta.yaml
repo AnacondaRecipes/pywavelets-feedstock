@@ -1,6 +1,6 @@
 {% set label = "'full'" %}
 {% set tests = "['pywt']" %}
-{% set name = "pywavelets" %}
+{% set name = "PyWavelets" %}
 {% set version = "1.4.1" %}
 
 package:
