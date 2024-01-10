@@ -44,7 +44,9 @@ about:
   home: https://github.com/PyWavelets/pywt
   license: MIT
   license_family: MIT
-  license_file: LICENSE
+  license_file: 
+    - LICENSE
+    - LICENSES_bundled.txt
   summary: Discrete Wavelet Transforms in Python
   description: |
     PyWavelets is a free Open Source library for wavelet transforms in Python.
