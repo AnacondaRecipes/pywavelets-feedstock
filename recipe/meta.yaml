@@ -1,19 +1,19 @@
 {% set label = "'full'" %}
 {% set tests = "['pywt']" %}
-{% set name = "PyWavelets" %}
-{% set version = "1.5.0" %}
+{% set name = "pywavelets" %}
+{% set version = "1.7.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0]|lower }}/{{ name|lower }}/{{ name|lower }}-{{ version }}.tar.gz
-  sha256: d9e25c7cabef7ccd53f5fead26ab22152fe4cb937bad7411b5d506e2b5de38f6
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: b47250e5bb853e37db5db423bafc82847f4cde0ffdf7aebb06336a993bc174f6
 
 build:
   number: 0
-  skip: True  # [py<39]
+  skip: true  # [py<310]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
@@ -21,14 +21,17 @@ requirements:
     - {{ compiler('c') }}
   host:
     - python
-    - cython >=0.29.35
-    - numpy {{ numpy }}
+    - cython >=3.0.4
+    - numpy 2.0 # [py<313]
+    - numpy 2.1 # [py>=313]
     - pip
-    - meson-python
+    - meson-python >=0.16.0
     - wheel
   run:
     - python
-    - {{ pin_compatible('numpy') }}
+    - numpy >=1.23,<3
+  run_constrained:
+    - scipy >=1.9
 
 test:
   imports:
