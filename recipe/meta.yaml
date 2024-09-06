@@ -21,14 +21,17 @@ requirements:
     - {{ compiler('c') }}
   host:
     - python
-    - cython >=0.29.35
-    - numpy {{ numpy }}
+    - cython >=3.0.4
+    - numpy 2.0 # [py<313]
+    - numpy 2.1 # [py>=313]
     - pip
     - meson-python
     - wheel
   run:
     - python
-    - {{ pin_compatible('numpy') }}
+    - numpy >=1.23,<3
+  run_constrained:
+    - scipy>=1.9
 
 test:
   imports:
