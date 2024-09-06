@@ -25,7 +25,7 @@ requirements:
     - numpy 2.0 # [py<313]
     - numpy 2.1 # [py>=313]
     - pip
-    - meson-python
+    - meson-python >=0.16.0
     - wheel
   run:
     - python
