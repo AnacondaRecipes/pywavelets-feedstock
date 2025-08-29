@@ -28,7 +28,7 @@ requirements:
     - wheel
   run:
     - python
-    - numpy >=1.26,<3
+    - numpy >=1.25,<3
   run_constrained:
     - scipy >=1.9
 
