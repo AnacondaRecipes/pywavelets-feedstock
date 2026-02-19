@@ -10,7 +10,7 @@ source:
   sha256: 148d12203377772bea452a59211d98649c8ee4a05eff019a9021853a36babdc8
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip: true  # [py<311]
 
@@ -23,8 +23,7 @@ requirements:
     - python
     - meson-python >=0.18.0
     - cython >=3.0.4
-    - numpy 2.0 # [py<313]
-    - numpy 2.1 # [py>=313]
+    - numpy {{ numpy }}
     - wheel
   run:
     - python
