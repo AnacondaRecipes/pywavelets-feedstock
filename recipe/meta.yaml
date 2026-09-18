@@ -24,7 +24,7 @@ requirements:
     - meson-python >=0.18.0
     - cython >=3.2.5
     - numpy {{ numpy }}
-    - numpy >=2.0.0
+    - wheel
   run:
     - python
     - numpy >=1.26.4,<3
