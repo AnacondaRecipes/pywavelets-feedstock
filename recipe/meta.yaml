@@ -22,6 +22,7 @@ requirements:
     - pip
     - python
     - meson-python >=0.18.0
+    - ninja-base
     - cython >=3.2.5
     - numpy {{ numpy }}
     - wheel
