@@ -29,8 +29,6 @@ requirements:
   run:
     - python
     - numpy >=1.26.4,<3
-  run_constrained:
-    - scipy >=1.9
 
 test:
   imports:
